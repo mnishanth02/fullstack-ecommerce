@@ -1,4 +1,6 @@
 import { Request, Response } from 'express';
+import {db} from "@/db";
+import {productsTable} from "@/db/product-schema";
 
 export function listProducts(req: Request, res: Response) {
     res.send("listProducts")
@@ -6,9 +8,10 @@ export function listProducts(req: Request, res: Response) {
 export function getProductById(req: Request, res: Response) {
     res.send("getProductById");
 }
-export function createProduct(req: Request, res: Response) {
+export async  function createProduct(req: Request, res: Response) {
     console.log(req.body);
-    res.send("Product Created");
+    const [product] = await db.insert(productsTable).values(req.body).returning();
+    res.status(201).json(product);
 }
 export function updateProduct(req: Request, res: Response) {
     res.send("Product Updated");
