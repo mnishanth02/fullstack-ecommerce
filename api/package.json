@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --import=tsx --watch --env-file=.env src/index.ts",
+    "dev": "node --import=tsx --watch --env-file=.env src/server.ts",
     "build": "tsc",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
@@ -16,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "consola": "^3.2.3",
     "drizzle-orm": "^0.36.4",
     "express": "^4.21.1",
     "pg": "^8.13.1"
